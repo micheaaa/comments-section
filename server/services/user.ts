@@ -14,4 +14,12 @@ export default class UserService {
   static getProfile(id: number) {
     return db.query(User).filter({id}).findOne()
   }
+
+  static async create(username: string) {
+    const user = new User(username)
+
+    await db.persist(user)
+
+    return user
+  }
 }

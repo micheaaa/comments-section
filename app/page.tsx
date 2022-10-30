@@ -18,6 +18,15 @@ async function UserList() {
   )
 }
 
+function UserForm() {
+  return (
+    <form action="/api/user/create" method="POST">
+      <input name="username" placeholder="username..." />
+      <button type="submit">Create User</button>
+    </form>
+  )
+}
+
 export default async function RootPage() {
   return (
     <main>
