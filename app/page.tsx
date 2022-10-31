@@ -1,4 +1,3 @@
-import {redirect, useRouter} from 'next/navigation'
 import {Suspense} from 'react'
 
 import UserService from '~/server/services/user'
@@ -11,7 +10,9 @@ async function UserList() {
       <h2>User List</h2>
       <ul>
         {users?.map((user) => 
-          <li key={user.id}>{user.id} - {user.username}</li>
+          <li key={user.id}>
+            {user.id} - {user.username} - {user.profile_image || 'n/a'}
+          </li>
         )}
       </ul>
     </>
@@ -22,6 +23,7 @@ function UserForm() {
   return (
     <form action="/api/user/create" method="POST">
       <input name="username" placeholder="username..." />
+      <input name="profile_image" placeholder="profile..." />
       <button type="submit">Create User</button>
     </form>
   )

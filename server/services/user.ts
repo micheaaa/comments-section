@@ -15,8 +15,12 @@ export default class UserService {
     return db.query(User).filter({id}).findOne()
   }
 
-  static async create(username: string) {
+  static async create(username: string, profile_image?: string) {
     const user = new User(username)
+
+    if(profile_image) {
+      user.profile_image = profile_image
+    }
 
     await db.persist(user)
 
